@@ -1,3 +1,5 @@
+# Site
+The site is at [https://marin-covid19.firebaseapp.com/](https://marin-covid19.firebaseapp.com/)
 # Data
 During the Covid19 pandemic, I wanted to make a point to a neighbor on Nextdoor that the growth was significant. I couldn't find anywhere on the internet that has a collection of historic Marin County COVID19 cases data, so I made one myself quickly on a [Google Sheet](https://docs.google.com/spreadsheets/d/1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/edit?usp=sharing). 
 
