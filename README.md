@@ -13,3 +13,7 @@ https://medium.com/firebase-developers/sheets-to-firebase-33132e31935b
 
 To make a plotly plot on site and push to Firebase
 https://medium.com/@o.lourme/our-iot-journey-through-esp8266-firebase-angular-and-plotly-js-part-3-644048e90ca4
+
+## My own notes
+`firebase serve --only hosting`
+`firebase deploy --only hosting`
