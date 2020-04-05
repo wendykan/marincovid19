@@ -1,11 +1,10 @@
 # Site
 The site is at [https://marin-covid19.firebaseapp.com/](https://marin-covid19.firebaseapp.com/)
-# Data
-During the Covid19 pandemic, I wanted to make a point to a neighbor on Nextdoor that the growth was significant. I couldn't find anywhere on the internet that has a collection of historic Marin County COVID19 cases data, so I made one myself quickly on a [Google Sheet](https://docs.google.com/spreadsheets/d/1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/edit?usp=sharing). 
+# Data Sources
+During the Covid19 pandemic, I wanted to make a point to a neighbor on Nextdoor that the growth was significant. I couldn't find anywhere on the internet that has a collection of historic Marin County COVID19 cases data, so I made one myself quickly on a [Google Sheet](https://docs.google.com/spreadsheets/d/1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/edit?usp=sharing). Since then, I've been getting messages on Nextdoor to keep my chart updated. I decided to make a nicer looking plot properly. 
 
-Since then, I've been getting messages on Nextdoor to keep my chart updated. I decided to make a nicer looking plot properly. 
-
-The data is purely from manual updates from from Marin HHS [daily updates](https://coronavirus.marinhhs.org/updates). 
+- NYTimes covid-19 [data](https://github.com/nytimes/covid-19-data)
+- My manual updates from from Marin HHS [daily updates](https://coronavirus.marinhhs.org/updates). 
 
 ## References
 To sync Google Sheets data to Firebase Realtime DB:
