@@ -9,6 +9,22 @@ A web app that lively plots data from a Firebase Realtime Database node, thanks 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Marin COVID-19 Numbers</title>
+    <style>
+    h4 {
+        font-family: verdana;
+    }
+    p.a {
+      font-family: verdana ;
+      font-size:13px; 
+      text-align: left; 
+      margin: 0
+    }
+    ul.a {
+      font-family: verdana ;
+      font-size:13px; 
+      text-align: left;
+      margin: 0
+</style>
     <link rel="stylesheet" href="style.css">
 
     <!-- Firebase App is always required and must be first -->
@@ -28,14 +44,20 @@ A web app that lively plots data from a Firebase Realtime Database node, thanks 
     <center><div id="myPlot1" style="width: 60vw; max-height:75vh"></div></center>
     <center><div id="myPlot2" style="width: 40vw; max-height:75vh"></div><div id="myPlot3" style="width: 40vw; max-height:75vh"></div></center>
     <center><div style="width: 40vw">
-        <p style="font-family:verdana; font-size:10px; text-align: center; margin: 0">
-        <a href="https://marin-covid19.firebaseapp.com/">Marin Confirmed Cases</a></b> maintained by Wendy Kan, a resident in Mill Valley. 
-        <a href="https://twitter.com/intent/tweet?screen_name=wendykan&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @wendykan</a>
+        <p class="a">
+            <a href="https://marin-covid19.firebaseapp.com/">Marin Confirmed Cases</a></b> maintained by Wendy Kan, a resident in Mill Valley. 
+            <a href="https://twitter.com/intent/tweet?screen_name=wendykan&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @wendykan</a>
+            Please submit feature requests on <a href="https://github.com/wendykan/marincovid19">Github</a>. 
         </p>
-        <p style="font-family:verdana; font-size:10px; text-align: center; margin: 0">
-        Please submit feature requests on <a href="https://github.com/wendykan/marincovid19">Github</a>. 
-        NYTimes data obtained from their <a href="https://github.com/nytimes/covid-19-data">data repo</a>. 
-        </p>
+
+        <h4>Data Sources</h4>
+
+        <!-- <p class="a"> -->
+        <ul class="a">
+            <li>Wendy's data entry <a href="https://docs.google.com/spreadsheets/d/1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/edit?usp=sharing">sheet</a> from <a href="https://coronavirus.marinhhs.org/">Marin HHS</a>. </li> 
+        <li>NYTimes Data from The New York Times, based on reports from state and local health agencies. Please visit their wonderful <a href="https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html">Interactive Maps</a>. For raw data, visit <a href="https://github.com/nytimes/covid-19-data">NYTimes Github data repo</a>. </li>
+        </ul>
+        <!-- </p> -->
     </div>
     </center>
 <!--         <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="wendykan"><a class="LI-simple-link" href='https://www.linkedin.com/in/wendykan?trk=profile-badge'>Wendy Chih-wen Kan</a></div>
