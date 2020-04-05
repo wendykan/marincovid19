@@ -25,15 +25,22 @@ A web app that lively plots data from a Firebase Realtime Database node, thanks 
 
 <body>
     <!-- Plotly chart will be drawn inside this div. -->
-    <div id="myPlot" style="width: 100vw; max-height:75vh"></div>
-
-    <p style="text-align: center; margin: 0">
-        <b><a href="https://marin-covid19.firebaseapp.com/">Marin Confirmed Cases</a></b> maintained by Wendy Kan, a resident in Mill Valley. <a href="https://twitter.com/intent/tweet?screen_name=wendykan&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @wendykan</a>
-        Please submit feature requests on <a href="https://github.com/wendykan/marincovid19">Github</a>
+    <center><div id="myPlot1" style="width: 60vw; max-height:75vh"></div></center>
+    <center><div id="myPlot2" style="width: 40vw; max-height:75vh"></div><div id="myPlot3" style="width: 40vw; max-height:75vh"></div></center>
+    <center><div style="width: 40vw">
+        <p style="font-family:verdana; font-size:10px; text-align: center; margin: 0">
+        <a href="https://marin-covid19.firebaseapp.com/">Marin Confirmed Cases</a></b> maintained by Wendy Kan, a resident in Mill Valley. 
+        <a href="https://twitter.com/intent/tweet?screen_name=wendykan&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @wendykan</a>
+        </p>
+        <p style="font-family:verdana; font-size:10px; text-align: center; margin: 0">
+        Please submit feature requests on <a href="https://github.com/wendykan/marincovid19">Github</a>. 
+        NYTimes data obtained from their <a href="https://github.com/nytimes/covid-19-data">data repo</a>. 
+        </p>
+    </div>
+    </center>
 <!--         <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="wendykan"><a class="LI-simple-link" href='https://www.linkedin.com/in/wendykan?trk=profile-badge'>Wendy Chih-wen Kan</a></div>
         <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
  --> 
-    </p>
     <!-- Include the script describing the work to do -->
     <script src="script.js"></script>
 </body>
