@@ -98,6 +98,11 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
             linecolor: 'black',
             linewidth: 2,
         },
+        legend: {
+            x: 0.02,
+            xanchor:'left',
+            y: 0.98
+        },
         margin: {
             r: 50,
             pad: 0
