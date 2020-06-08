@@ -20,23 +20,23 @@ firebase.initializeApp(config);
 // -----
 // See https://firebase.google.com/docs/database/web/lists-of-data for trigger syntax:
 
-function processData(allRows,xLabel,yLabel,yTraceName) {
+// function processData(allRows,xLabel,yLabel,yTraceName) {
 
-  console.log(allRows.length);
-  var x = [], y = [];
+//   console.log(allRows.length);
+//   var x = [], y = [];
 
-  for (var i=0; i<allRows.length; i++) {
-    row = allRows[i];
+//   for (var i=0; i<allRows.length; i++) {
+//     row = allRows[i];
  
-    x.push(row[xLabel]);
-    y.push(row[yLabel]);
-    if(i === 0) {
-      console.log(i);
-      console.log(row);
-    }
-  }
-  makePlotly( x, y,  yTraceName);
-}
+//     x.push(row[xLabel]);
+//     y.push(row[yLabel]);
+//     if(i === 0) {
+//       console.log(i);
+//       console.log(row);
+//     }
+//   }
+//   makePlotly( x, y,  yTraceName);
+// }
 
 
 
@@ -45,7 +45,7 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
     let confirmed_cases = [];
     let increase_ratio = [];
     let positive_rate = [];
-
+    
     ts_measures.forEach(ts_measure => {
         timestamps.push(moment(ts_measure.val().date).format('YYYY-MM-DD HH:mm:ss'));
         confirmed_cases.push(ts_measure.val().confirmed_cases);
@@ -54,6 +54,7 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
     });
 
     myPlotDiv1 = document.getElementById('myPlot1');
+    myPlotDiv15 = document.getElementById('myPlot15');
     myPlotDiv2 = document.getElementById('myPlot2');
     myPlotDiv3 = document.getElementById('myPlot3');
 
@@ -65,6 +66,7 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
         type: 'bar',
         name: 'Marin HHS Cases'
     };
+
     const data2 = [{
         x: timestamps,
         y: increase_ratio,
@@ -108,6 +110,33 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
             pad: 0
         }
     };
+    const layout15 = {
+        title: 'Marin County, California COVID-19 Daily Increase Cases',
+        titlefont: {
+            family: 'Courier New, monospace',
+            size: 16,
+            color: '#000'
+        },
+        xaxis: {
+            linecolor: 'black',
+            linewidth: 2
+        },
+        yaxis: {
+            title: 'ratio',
+            titlefont: {
+                family: 'Courier New, monospace',
+                size: 14,
+                color: '#000'
+            },
+            linecolor: 'black',
+            linewidth: 2,
+        },
+        margin: {
+            r: 50,
+            pad: 0
+        }
+    };
+
     const layout2 = {
         title: 'Marin County, California COVID-19 Daily Increase Ratio',
         titlefont: {
@@ -134,6 +163,7 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
             pad: 0
         }
     };
+
     const layout3 = {
         title: 'Marin County, California COVID-19 Daily Test Positive Rate',
         titlefont: {
@@ -162,25 +192,24 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
     };
     var nyt_data_url = 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv';
     Plotly.d3.csv(nyt_data_url, function(err, rows){
-        var x = [], y = [], deaths=[];
+        var x = [], total_cases = [], deaths=[], daily_new_cases=[];
 
         for (var i=0; i<rows.length; i++) {
             row = rows[i];
             if(row['fips']=='06041') {
                 x.push(moment(Date.parse(row['date'])).format('YYYY-MM-DD HH:mm:ss'));
-                y.push(parseInt(row['cases']));
+                total_case_row = parseInt(row['cases'])
+                if (total_cases.length > 0) { // only calculate new cases when there's prev data
+                    daily_new_cases.push(total_case_row - total_cases[total_cases.length-1])
+                }
+                total_cases.push(total_case_row);
                 deaths.push(parseInt(row['deaths']))
             }
-            // if(i === 0) {
-            //   console.log(i);
-            //   console.log(row);
-            // }
         }
-        // console.log(y);
 
         var nyt_cases = {
             x: x,
-            y: y,
+            y: total_cases,
             type: 'bar',
             name: 'NYTimes Cases'
         };
@@ -190,14 +219,21 @@ firebase.database().ref('1neJU9AKBjDqCWke0x4d7QRSA9zqoPERahumhBKgLO1k/Sheet1').o
             type: 'scatter',
             name: 'NYTimes Deaths'
         };
-
+        var nyt_daily_new_cases = {
+            x: x,
+            y: daily_new_cases,
+            type: 'bar',
+            name: 'NYTimes Daily New Cases'
+        };
+        // console.log(daily_new_cases)
         traces = [data1, nyt_cases, nyt_deaths];
         Plotly.newPlot(myPlotDiv1, traces,layout1,{ responsive: true });
-        
+        Plotly.newPlot(myPlotDiv15, [nyt_daily_new_cases],layout15,{ responsive: true });
     });
 
     // At last we plot data :-)
     // Plotly.newPlot(myPlotDiv1, data1, layout1, { responsive: true });
+    // Plotly.newPlot(myPlotDiv15, data15, layout15, { responsive: true });
     Plotly.newPlot(myPlotDiv2, data2, layout2, { responsive: true });
     Plotly.newPlot(myPlotDiv3, data3, layout3, { responsive: true });
 });
